@@ -7,6 +7,7 @@ public class CamelOsgiTestBlueprint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("timer:start")
+                .id("mainRoute")
                 .log(LoggingLevel.INFO, "com.asodc.camel.osgi.CamelOsgiTestBlueprint", "Headers: ${headers}");
     }
 }
