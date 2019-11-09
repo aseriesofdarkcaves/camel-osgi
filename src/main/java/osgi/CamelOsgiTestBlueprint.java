@@ -19,10 +19,10 @@ public class CamelOsgiTestBlueprint extends RouteBuilder {
                 .setHeader(VISITED_FIRST_ENDPOINT, constant(false))
                 .setHeader(VISITED_SECOND_ENDPOINT, constant(false))
                 .setHeader(VISITED_THIRD_ENDPOINT, constant(false))
+                .log(LoggingLevel.INFO, LOGGER, SIMPLE_HEADERS_MESSAGE)
                 .multicast()
                 .parallelProcessing()
                 .to("direct:firstEndpoint", "direct:secondEndpoint", "direct:thirdEndpoint");
-//                .log(LoggingLevel.INFO, LOGGER, SIMPLE_HEADERS_MESSAGE);
 
         from("direct:firstEndpoint")
                 .id("firstEndpoint")
