@@ -4,7 +4,7 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
 public class CamelOsgiTestBlueprint extends RouteBuilder {
-    public static final String LOGGER = "com.asodc.camel.osgi.CamelOsgiTestBlueprint";
+    private static final String LOGGER = "com.asodc.camel.osgi.CamelOsgiTestBlueprint";
 
     private static final String VISITED_FIRST_ENDPOINT = "VisitedFirstEndpoint";
     private static final String VISITED_SECOND_ENDPOINT = "VisitedSecondEndpoint";
