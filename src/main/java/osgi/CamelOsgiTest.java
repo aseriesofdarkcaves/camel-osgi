@@ -23,12 +23,11 @@ public class CamelOsgiTest {
 //        context.start();
 
         // Best of both
+        Main main = new Main();
         CamelContext context = new DefaultCamelContext();
         context.setUseMDCLogging(true);
         context.addRoutes(new CamelOsgiTestBlueprint());
-        context.start();
 
-        Main main = new Main();
         main.getCamelContexts().add(context);
         main.run();
     }
