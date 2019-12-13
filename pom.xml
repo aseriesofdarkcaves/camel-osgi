@@ -39,7 +39,7 @@
                 <version>${camel.version}</version>
                 <configuration>
                     <applicationContextUri>OSGI-INF/blueprint/blueprint.xml</applicationContextUri>
-                    <mainClass>osgi.CamelOsgiTest</mainClass>
+                    <mainClass>com.asodc.camel.CamelOsgiTest</mainClass>
                 </configuration>
             </plugin>
             <!-- This plugin generates the OSGi metadata MANIFEST.MF file -->

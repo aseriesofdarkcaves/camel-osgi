@@ -1,10 +1,10 @@
-package osgi;
+package com.asodc.camel;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
 public class CamelOsgiTestBlueprint extends RouteBuilder {
-    private static final String LOGGER = "com.asodc.camel.osgi.CamelOsgiTestBlueprint";
+    private static final String LOGGER = "com.asodc.camel.com.asodc.camel.CamelOsgiTestBlueprint";
 
     private static final String VISITED_FIRST_ENDPOINT = "VisitedFirstEndpoint";
     private static final String VISITED_SECOND_ENDPOINT = "VisitedSecondEndpoint";
@@ -12,6 +12,7 @@ public class CamelOsgiTestBlueprint extends RouteBuilder {
 
     private static final String SIMPLE_HEADERS_MESSAGE = "Headers: ${headers}";
 
+    @SuppressWarnings("RedundantThrows")
     @Override
     public void configure() throws Exception {
         from("timer:timer?period=5000")

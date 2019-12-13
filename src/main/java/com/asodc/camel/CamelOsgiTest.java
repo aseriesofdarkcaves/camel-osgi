@@ -1,4 +1,4 @@
-package osgi;
+package com.asodc.camel;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -23,6 +23,9 @@ public class CamelOsgiTest {
 //        context.start();
 
         // Best of both
+        // Note that this class is only used for running in an IDE
+        // The blueprint.xml file is used to bootstrap the startup of CamelOsgiTestBlueprint
+        // So we don't even need this file when we export to a bundle jar
         Main main = new Main();
         CamelContext context = new DefaultCamelContext();
         context.setUseMDCLogging(true);
