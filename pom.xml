@@ -13,6 +13,7 @@
 
     <properties>
         <camel.version>2.21.2</camel.version>
+        <log4j2.version>2.12.1</log4j2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -23,61 +24,16 @@
             <artifactId>camel-core</artifactId>
             <version>${camel.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.28</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- This plugin enables run via mvn camel:run -->
-            <plugin>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-maven-plugin</artifactId>
-                <version>${camel.version}</version>
-                <configuration>
-                    <applicationContextUri>OSGI-INF/blueprint/blueprint.xml</applicationContextUri>
-                    <mainClass>com.asodc.camel.CamelOsgiTest</mainClass>
-                </configuration>
-            </plugin>
-            <!-- This plugin generates the OSGi metadata MANIFEST.MF file -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>4.2.1</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Export-Package>osgi</Export-Package>
-                        <Import-Package>*</Import-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-            <!-- TODO: figure out the required project setup for building a kar -->
-            <!-- This is for creating a kar -->
-<!--
-            <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>features-maven-plugin</artifactId>
-                <version>2.2.9</version>
-                <executions>
-                    <execution>
-                        <id>create-kar</id>
-                        <goals>
-                            <goal>create-kar</goal>
-                        </goals>
-                        <configuration>
-                            <finalName>CamelOsgiTest</finalName>
-                            <resourcesDir>${project.build.directory}/bin</resourcesDir>
-                            <featuresFile>src/main/resources/features.xml</featuresFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
--->
             <!-- Maven compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -86,6 +42,32 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- This plugin generates the OSGi bundle -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>4.2.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Export-Package>com.asodc.camel</Export-Package>
+                        <Import-Package>*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+            <!-- This plugin enables run via mvn camel:run -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+                <configuration>
+                    <useBlueprint>true</useBlueprint>
+                    <applicationContextUri>OSGI-INF/blueprint/blueprint.xml</applicationContextUri>
                 </configuration>
             </plugin>
         </plugins>

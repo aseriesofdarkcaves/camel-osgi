@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: figure out how to use this file correctly e.g. should probably call the feature CamelOsgiTestBlueprint -->
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0" name="CamelOsgiTest-feature">
-    <feature name="CamelOsgiTest-feature" version="1.0-SNAPSHOT">
-        <feature>camel-spring</feature>
-        <feature>camel-blueprint</feature>
-        <feature>camel-core</feature>
-    </feature>
-</features>
