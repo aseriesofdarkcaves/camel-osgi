@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
-    <bean id="CamelOsgiTestBlueprint" class="com.asodc.camel.CamelOsgiTestBlueprint" />
+    <bean id="MyRouteBuilder" class="com.asodc.camel.MyRouteBuilder" />
     <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="org.asodc.camel.CamelOsgiTestBlueprint" useMDCLogging="true">
-        <routeBuilder ref="CamelOsgiTestBlueprint" />
+        <routeBuilder ref="MyRouteBuilder" />
     </camelContext>
 </blueprint>

@@ -3,8 +3,8 @@ package com.asodc.camel;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
-public class CamelOsgiTestBlueprint extends RouteBuilder {
-    private static final String LOGGER = "com.asodc.camel.CamelOsgiTestBlueprint";
+public class MyRouteBuilder extends RouteBuilder {
+    private static final String LOGGER = MyRouteBuilder.class.getCanonicalName();
 
     private static final String VISITED_FIRST_ENDPOINT = "VisitedFirstEndpoint";
     private static final String VISITED_SECOND_ENDPOINT = "VisitedSecondEndpoint";
