@@ -12,9 +12,8 @@ public class MyRouteBuilder extends RouteBuilder {
 
     private static final String SIMPLE_HEADERS_MESSAGE = "Headers: ${headers}";
 
-    @SuppressWarnings("RedundantThrows")
     @Override
-    public void configure() throws Exception {
+    public void configure() {
         from("timer:timer?period=5000")
                 .id("timer")
                 .setHeader(VISITED_FIRST_ENDPOINT, constant(false))
